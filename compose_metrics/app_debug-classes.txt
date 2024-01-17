@@ -1,0 +1,33 @@
+stable class MainActivity {
+  <runtime stability> = Stable
+}
+stable class Movie {
+  stable val title: String
+  stable val imageUrl: String
+  stable val upvotes: Int
+  <runtime stability> = Stable
+}
+runtime class Loaded {
+  runtime val data: T
+  <runtime stability> = Parameter(T)
+}
+runtime class Error {
+  runtime val errorData: E
+  <runtime stability> = Parameter(E)
+}
+stable class Loading {
+  <runtime stability> = Stable
+}
+stable class ViewState {
+  <runtime stability> = Stable
+}
+unstable class MoviesScreenData {
+  stable val pageTitle: String
+  unstable val moviesList: List<Movie>
+  <runtime stability> = Unstable
+}
+unstable class MoviesViewModel {
+  stable val pageTitle: String
+  unstable val movies: StateFlow<ViewState<MoviesScreenData, Nothing>>
+  <runtime stability> = Unstable
+}

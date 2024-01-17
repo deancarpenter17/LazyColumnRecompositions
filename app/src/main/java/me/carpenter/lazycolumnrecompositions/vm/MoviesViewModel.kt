@@ -8,13 +8,24 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 import me.carpenter.lazycolumnrecompositions.data.Movie
+import me.carpenter.lazycolumnrecompositions.data.ViewState
 import me.carpenter.lazycolumnrecompositions.data.getMoviesList
+import me.carpenter.lazycolumnrecompositions.ui.MoviesScreenData
 
 class MoviesViewModel : ViewModel() {
-    val movies: StateFlow<List<Movie>> = flow {
+    private val pageTitle = "Movies"
+
+    val movies: StateFlow<ViewState<MoviesScreenData, Nothing>> = flow {
         var movies: List<Movie> = getMoviesList()
         // emit initial movies list with no ratings
-        emit(movies)
+        emit(
+            ViewState.Loaded(
+                MoviesScreenData(
+                    pageTitle = pageTitle,
+                    moviesList = movies
+                )
+            )
+        )
 
         // every 2 seconds, update the rating of a single movie in the list.
         // the rest of the list items are identical
@@ -28,14 +39,21 @@ class MoviesViewModel : ViewModel() {
                 )
             )
 
-            emit(movies)
+            emit(
+                ViewState.Loaded(
+                    MoviesScreenData(
+                        pageTitle = pageTitle,
+                        moviesList = movies
+                    )
+                )
+            )
             currentIndex = if (currentIndex == movies.lastIndex - 1) 0 else currentIndex + 1
         }
     }
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(),
-            initialValue = emptyList()
+            initialValue = ViewState.Loading
         )
 }
 

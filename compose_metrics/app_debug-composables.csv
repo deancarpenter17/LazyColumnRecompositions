@@ -1,0 +1,8 @@
+package,name,composable,skippable,restartable,readonly,inline,isLambda,hasDefaults,defaultsGroup,groups,calls,
+me.carpenter.lazycolumnrecompositions.data.ViewStateScreen,ViewStateScreen,1,1,1,0,0,0,0,0,1,1,
+me.carpenter.lazycolumnrecompositions.data.DefaultLoadingScreen,DefaultLoadingScreen,1,1,1,0,0,0,0,0,1,1,
+me.carpenter.lazycolumnrecompositions.data.DefaultErrorScreen,DefaultErrorScreen,1,1,1,0,0,0,0,0,1,1,
+me.carpenter.lazycolumnrecompositions.ui.MoviesScreen,MoviesScreen,1,0,1,0,0,0,0,0,1,2,
+me.carpenter.lazycolumnrecompositions.ui.MoviesList,MoviesList,1,0,1,0,0,0,0,0,1,1,
+me.carpenter.lazycolumnrecompositions.ui.MovieRow,MovieRow,1,1,1,0,0,0,0,0,1,1,
+me.carpenter.lazycolumnrecompositions.ui.theme.LazyColumnRecompositionsTheme,LazyColumnRecompositionsTheme,1,1,1,0,0,0,1,0,4,5,
